@@ -31,30 +31,16 @@ class FileStorage:
             with open(self.__file_path, "r") as f:
                 zizt3 = json.loads(f.read())
 
-        keys = list(zizt3.keys())
-        q = 0
-
-        while q < len(keys):
-            key = keys[q]
-            obj_dict = zizt3[key]
-            cls = globals()[obj_dict['__class__']]
-            self.__objects[key] = cls(**obj_dict)
-            q += 1
+            for key, obj_dict in zizt3.items():
+                cls = globals()[obj_dict['__class__']]
+                self.__objects[key] = cls(**obj_dict)
 
     def save(self):
         to_json = ""
         zizt3 = {}
 
-        keys = list(self.__objects.keys())
-        q = 0
-
-        while q < len(keys):
-            key = keys[q]
-            value = self.__objects[key].to_dict()
-            zizt3[key] = value
-            q += 1
-
+        for key, value in self.__objects.items():
+            zizt3[key] = value.to_dict()
         to_json = json.dumps(zizt3)
-
         with open(self.__file_path, "w") as f:
             f.write(to_json)
