@@ -61,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
     def help_EOF(self):
         print('EOF command to exit the program')
 
-    def emp(self):
+    def emptyline(self):
         """Empty specific_line."""
         pass
 
