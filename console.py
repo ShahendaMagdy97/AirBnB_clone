@@ -14,6 +14,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
+
 def func1(specific_line):
     var_search = re.search(r"\{(.*?)\}", specific_line)
     num1 = re.search(r"\[(.*?)\]", specific_line)
@@ -21,13 +22,13 @@ def func1(specific_line):
         if num1 is None:
             return [var_i.strip(",") for var_i in split(specific_line)]
         else:
-            l = split(specific_line[:num1.span()[0]])
-            ran = [var_i.strip(",") for var_i in l]
+            qwe = split(specific_line[:num1.span()[0]])
+            ran = [var_i.strip(",") for var_i in qwe]
             ran.append(num1.group())
             return ran
     else:
-        l = split(specific_line[:var_search.span()[0]])
-        ran = [var_i.strip(",") for var_i in l]
+        qwe = split(specific_line[:var_search.span()[0]])
+        ran = [var_i.strip(",") for var_i in qwe]
         ran.append(var_search.group())
         return ran
 
@@ -51,11 +52,11 @@ class HBNBCommand(cmd.Cmd):
 
     def help_quit(self):
         """ It will serve as a quit command. """
-        print('Quit command to exit the program')        
+        print('Quit command to exit the program')
+
     def do_help(self, specific_line):
         """overrideing method"""
         cmd.Cmd.do_help(self, specific_line)
-
 
     def help_EOF(self):
         print('EOF command to exit the program')
