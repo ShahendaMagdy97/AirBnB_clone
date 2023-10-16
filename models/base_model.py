@@ -23,6 +23,7 @@ class BaseModel:
                         self.created_at = datetime.fromisoformat(var2)
                     else:
                         setattr(self, var1, var2)
+
     def __str__(self):
 
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
