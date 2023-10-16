@@ -16,6 +16,7 @@ from models.amenity import Amenity
 from models.review import Review
 import json
 
+
 class TestConsole(unittest.TestCase):
 
     def func_console(self):
@@ -31,6 +32,7 @@ class TestConsole(unittest.TestCase):
     def test_emp_linn(self):
         with patch("sys.stdout", new=StringIO()) as result:
             self.assertEqual("", result.getvalue())
+
 
 class TestCreate(unittest.TestCase):
     def test_arg_leng(self):
@@ -209,6 +211,7 @@ class TestCount(unittest.TestCase):
             HBNBCommand().onecmd(used_var)
             self.assertEqual(result.getvalue().strip(), str(counter))
 
+
 class Loadclass(unittest.TestCase):
 
     def func_load(self):
@@ -282,6 +285,7 @@ class Loadclass(unittest.TestCase):
             HBNBCommand().onecmd(used_var)
             expout = "** class doesn't exist **"
             self.assertEqual(result.getvalue().strip(), expout)
+
 
 class TestDestroy(unittest.TestCase):
 
@@ -369,6 +373,7 @@ class TestDestroy(unittest.TestCase):
             for key, obj_var1 in comman.items():
                 var_list1.append(key)
             self.assertNotIn(id, var_list1)
+
 
 class TestUpdate(unittest.TestCase):
     def func_check_update(self):
